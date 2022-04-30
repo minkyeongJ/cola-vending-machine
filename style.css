@@ -44,16 +44,6 @@ body{
     gap: 12px;
 }
 
-.vending-machine .list-item li{
-    position: relative;
-    border-radius: 10px;
-    box-shadow: 0px 0px 4px rgbs(0, 0, 0, 0.5);
-}
-
-.vending-machine .list-item .img-item{
-    width: 36px;
-}
-
 .vending-machine .list-item li:active::before{
     content: '';
     display: block;
@@ -66,4 +56,226 @@ body{
     border-radius: 10px;
     box-sizing: border-box;
 }
+
+.vending-machine .list-item li{
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+}
+
+.vending-machine .btn-item {
+    padding: 11px 0 9px;
+}
+
+.vending-machine .list-item .img-item{
+    width: 36px;
+    margin: 0 auto;
+}
+
+.vending-machine .title-item{
+    display: block;
+    line-height: 13px;
+    font-size: 9px;
+    margin: 6px 0 7px;
+}
+
+.vending-machine .txt-price{
+    display: inline-block;
+    font-size: 12px;
+    padding: 5px 12px;
+    background-color: #6327FE;
+    border-radius: 50px;
+    color: #fff;
+}
+
+.content-buy .info-charge,
+.content-buy .input-inputmoney,
+.content-buy .list-staged {
+    padding: 7px 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.content-buy .btn-return,
+.content-buy .btn-inputmoney,
+.content-buy .btn-get{
+    font-size: 13px;
+    border-radius: 5px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.vending-machine .content-buy {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.content-buy .info-charge {
+    grid-column: 1/3;
+    font-size: 14px;
+    background-color: #EAE8FE;
+}
+
+.content-buy .input-inputmoney {
+    grid-column: 1/3;
+    border: 1px solid #BDBDBD;
+}
+
+.info-charge .txt-charge {
+    float: right;
+}
+
+.content-buy .btn-get {
+    font-weight: 700;
+    background-color: #6327FE;
+    color: #fff;
+}
+
+.content-buy .list-staged {
+    grid-column: 1/3;
+    height: 106px;
+    overflow-y: scroll;
+    border: 1px solid #BDBDBD;
+    background-color: #EAE8FE;
+}
+
+.list-staged li{
+    padding: 8px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.list-staged li+li{
+    margin-top: 6px;
+}
+
+.list-staged .img-item,
+.list-staged .txt-item{
+    float: left;
+}
+
+.list-staged .img-item{
+    width: 18px;
+}
+
+.list-staged .txt-item {
+    margin-left: 10px;
+    line-height: 33px;
+    font-size: 9px;
+}
+
+.list-staged .num-counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #BDBDBD;
+    border-radius: 5px;
+    float: right;
+}
+
+#app .my-info {
+    background-color: #EAE8FE;
+}
+
+.my-info .content-mymoney {
+    padding: 9px 27px;
+    background-color: #fff;
+}
+
+.content-mymoney .info-mymoney {
+    padding: 6px 10px;
+    line-height: 20px;
+    background-color: #EAE8FE;
+    border-radius: 5px;
+}
+
+.content-mymoney .txt-mymoney {
+    float: right;
+    font-weight: 700;
+}
+
+.my-info .content-myitems {
+    margin-top: 20px;
+    padding: 25px 27px 32px;
+    background-color: #fff;
+}
+
+.content-myitems .title-myitem {
+    display: block;
+    text-align: center;
+    margin-bottom: 13px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.content-myitems .list-staged {
+    height: 364px;
+    overflow-y: scroll;
+    padding: 12px;
+    background-color: #EAE8FE;
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.content-myitems .txt-total {
+    display: block;
+    text-align: right;
+    font-size: 12px;
+    line-height: 17px;
+    margin-top: 10px;
+}
+
+.vending-machine .list-item li.sold-out::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    border-radius: 10px;
+    background: no-repeat center/ 60px 46px url('./images/mediaquery/Sold-out.svg') rgba(0, 0, 0, 0.5);
+}
+
+.vending-machine .list-item li.sold-out::after {
+    content: '품절';
+    overflow: hidden;
+    position: absolute;
+    text-indent: -9999px;
+    line-height: 0;
+    font-size: 1px;
+    color: transparent;
+}
+
+.vending-machine .list-item li.sold-out {
+    pointer-events: none;
+}
+
+@media only screen and (min-device-width: 320px) and (max-width: 480px) and (-webkit-min-device-pixel-ratio:2) {
+    body {
+        background-color: #fff;
+    }
+
+    #app {
+        padding-top: 65px;
+    }
+
+    #app .tit-app {
+        width: 166px;
+        height: 70px;
+    }
+
+    .my-info .cont-myitems {
+        margin-top: 0;
+        padding: 31px 27px 32px;
+    }
+}
+
+
 
