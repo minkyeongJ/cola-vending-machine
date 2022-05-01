@@ -10,8 +10,7 @@ vending-machine 페이지 확인 링크: https://minkyeongj.github.io/cola-vendi
 ## 2. 구현해야 할 Mobile 화면
 ![구현해야 할 Mobile 화면](README_img/%ED%8C%8C%EC%9D%B4%EB%84%90%20%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8_7%EB%B2%88_Mobile.png)
 
-# 사용언어
-HTML/CSS
+# 사용언어 : HTML/CSS
 
 # 구현 시 어려웠던 내용
 ![처음 화면을 블록으로 나누었을 때 형태](README_img/%ED%99%94%EB%A9%B4%EB%B8%94%EB%A1%9D1.png)
