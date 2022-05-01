@@ -277,11 +277,21 @@ body{
 
     #app {
         padding-top: 65px;
+        flex-direction: column;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #app .vending-machine,
+    #app .my-info{
+        margin: 0 auto;
     }
 
     #app .title-app {
         width: 166px;
         height: 70px;
+        left: 50%;
+        transform: translate(-50%);
     }
 
     .my-info .content-myitems {
