@@ -140,6 +140,19 @@ body{
     background-color: #EAE8FE;
 }
 
+.content-buy .list-staged::-webkit-scrollbar,
+.content-myitems .list-staged::-webkit-scrollbar{
+    width: 12px;/*스크롤바의 폭*/
+}
+
+.content-buy .list-staged::-webkit-scrollbar-thumb,
+.content-myitems .list-staged::-webkit-scrollbar-thumb{
+    background-color: white; /*스크롤바의 색상*/
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    border-radius: 50px;
+}
+
 .list-staged li{
     padding: 8px;
     border-radius: 5px;
