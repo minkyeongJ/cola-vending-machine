@@ -3,8 +3,11 @@ const $inputButton = document.querySelector('.btn-inputmoney');
 const $charge = document.querySelector('.txt-charge');
 const $myMoney = document.querySelector('.txt-mymoney');
 const $listItem = document.querySelector('.list-item');
+const $listStaged = document.querySelector('.list-staged');
 
 let input;
+
+$charge.textContent = `${parseInt($myMoney.textContent.replace(',',''))} 원`;
 
 //<입금 시 잔액 및 소지금 금액 증가>
 const onInput = (event) => {
@@ -54,6 +57,7 @@ colaDataBase.push(orange_Cola);
 
 colaDataBase.forEach(cola => {
   const li = document.createElement('li');
+  li.classList.add('list-btn');
   const listButton = document.createElement('button');
   listButton.classList.add('btn-item');
   
@@ -80,7 +84,26 @@ colaDataBase.forEach(cola => {
 });
 //</콜라 리스트 업>
 
+//<콜라 선택 시 잔액 감소>
+const $btnlist = document.querySelectorAll('.list-btn');
 
+let charge = parseInt($charge.textContent.replace(',',''));
 
+const onClickBtnItem = (event) => {
+  const clickedBtn = event.target;
+  const price = parseInt(clickedBtn.querySelector('.txt-price').textContent);
+  const myMoney = parseInt($myMoney.textContent.replace(',',''));
+  //잔액 감소 및 리스트에 콜라 추가
+  if (charge - price < 0) {
+    // charge - price가 < 0 일 때
+    alert("잔액이 부족합니다.");
+    console.log(myMoney);
+    console.log(price);
+  } else {
+    charge = charge - price;
+    $charge.textContent = `${charge} 원`;
+  }
+}
 
-//<콜라 선택 시 발생하는 이벤트>
+$btnlist.forEach(btn => btn.addEventListener('click', onClickBtnItem));
+//</콜라 선택 시 잔액 감소>
