@@ -165,7 +165,7 @@ body{
 }
 
 .list-staged .img-item,
-.list-staged .txt-item{
+.list-staged .title-item{
     float: left;
 }
 
@@ -173,7 +173,7 @@ body{
     width: 18px;
 }
 
-.list-staged .txt-item {
+.list-staged .title-item {
     margin-left: 10px;
     line-height: 33px;
     font-size: 9px;
