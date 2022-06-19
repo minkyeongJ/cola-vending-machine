@@ -104,6 +104,7 @@ const onClickBtnItem = (event) => {
   } else {
     charge = charge - price;
     $charge.textContent = `${charge} 원`;
+    onClickBtnItemList(event);
   }
 }
 
@@ -199,7 +200,7 @@ const onClickBtnItemList = (cola) => {
   console.log(pendingColaList);
 }
 
-$btnlist.forEach(btn => btn.addEventListener('click', onClickBtnItemList));
+// $btnlist.forEach(btn => btn.addEventListener('click', onClickBtnItemList));
 //</콜라 선택 시 결제 대기 목록에 추가>
 
 //<획득 버튼 동작>
