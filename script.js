@@ -142,8 +142,20 @@ const onClickBtnItemList = (cola) => {
     if (pendingCompareArr.length !== setPending.size) {
       //새로 들어온 값이 기존 데이터와 중복 될 때 => 갯수(count)를 상승
       // penndingColaList[i].count++;
-      pendingColaList.push(new PendingColaCount(img, title)); 
       console.log('중복!');
+      pendingColaList.push(new PendingColaCount(img, title));
+      for (let i = 0; i < pendingColaList.length; i++){
+        console.log("for문");
+        const colaFirstIndex = pendingColaList.map(cola => cola.title).indexOf(pendingColaList[i].title);
+        const colaLastIndex = pendingColaList.map(cola => cola.title).lastIndexOf(pendingColaList[i].title);
+        if (colaFirstIndex !== colaLastIndex) {
+          console.log("중복값");
+          pendingColaList[colaFirstIndex].count++;
+          pendingColaList.splice(colaLastIndex, 1);
+          console.log(pendingColaList[i].title);
+          break;
+        }
+      }
     } else {
       //중복 안 될 때 => 목록을 추가
       pendingColaList.push(new PendingColaCount(img, title)); 
