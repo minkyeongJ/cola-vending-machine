@@ -10,8 +10,6 @@ const $totalItemPrice = document.querySelector('.total-itemPrice');
 
 let input;
 
-$charge.textContent = `${parseInt($myMoney.textContent.replace(',',''))} 원`;
-
 //<입금 시 잔액 및 소지금 금액 증가>
 const onInput = (event) => {
   //입력 된 값 저장
@@ -21,8 +19,8 @@ const onInput = (event) => {
 
 const onClickButton = () => {
   //입력 된 값을 잔액과 소지금에 업데이트
-  $charge.textContent = `${parseInt($charge.textContent.replace(',','')) + input} 원`;
-  $myMoney.textContent = `${parseInt($myMoney.textContent.replace(',','')) + input} 원`;
+  $myMoney.textContent = `${parseInt($myMoney.textContent.replaceAll(',','')) + input} 원`;
+  $charge.textContent = $myMoney.textContent;
   $input.value = '';
   $input.focus();
   input = 0;
@@ -89,16 +87,19 @@ colaDataBase.forEach(cola => {
 //<콜라 선택 시 잔액 감소>
 const $btnlist = document.querySelectorAll('.list-btn');
 
-let charge = parseInt($charge.textContent.replace(',',''));
 
 const onClickBtnItem = (event) => {
+  let charge = parseInt($charge.textContent.replaceAll(',',''));
   const clickedBtn = event.target;
   const price = parseInt(clickedBtn.querySelector('.txt-price').textContent);
-  const myMoney = parseInt($myMoney.textContent.replace(',',''));
+  const myMoney = parseInt($myMoney.textContent.replaceAll(',',''));
   //잔액 감소 및 리스트에 콜라 추가
   if (charge - price < 0) {
+    console.log($charge.textContent.replaceAll(',','').replaceAll(' ','').replaceAll('원',''));
+    console.log(parseInt('10000'));
     // charge - price가 < 0 일 때
     alert("잔액이 부족합니다.");
+    console.log(charge);
     console.log(myMoney);
     console.log(price);
   } else {
