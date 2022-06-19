@@ -107,3 +107,51 @@ const onClickBtnItem = (event) => {
 
 $btnlist.forEach(btn => btn.addEventListener('click', onClickBtnItem));
 //</콜라 선택 시 잔액 감소>
+
+//<콜라 선택 시 결제 대기 목록에 추가>
+class PendingColaCount{
+  constructor(img, title){
+    this.img = img;
+    this.title = title;
+    this.count = 1;
+  }
+}
+
+let pendingColaList;
+let pendingCompareArr; 
+let setPending;
+
+const onClickBtnItemList = (cola) => {
+  const colaData = cola.target;
+  const img = colaData.querySelector('.img-item').src;
+  const title = colaData.querySelector('.title-item').textContent;
+
+  //중복 처리
+  //penndingColaList[0].title 이렇게 배열에 저장된 title 값을 불러올 수 있다
+  // 첫 번째 추가할 때
+  if (!pendingColaList) {
+    pendingColaList = [];
+    pendingColaList.push(new PendingColaCount(img, title));
+    pendingCompareArr = [...pendingColaList];
+    setPending = new Set(pendingCompareArr.map(cola => cola.title));
+  } else {
+    pendingCompareArr.push(new PendingColaCount(img, title));
+    console.log(pendingColaList);
+    console.log("==============");
+    setPending = new Set(pendingCompareArr.map(cola => cola.title));
+    if (pendingCompareArr.length !== setPending.size) {
+      //새로 들어온 값이 기존 데이터와 중복 될 때 => 목록을 추가
+      // penndingColaList[i].count++;
+      pendingColaList.push(new PendingColaCount(img, title)); 
+      console.log('중복!');
+    } else {
+      //중복 안 될 때 => 갯수(count)를 상승
+      pendingColaList.push(new PendingColaCount(img, title)); 
+      console.log('중복 아님');
+    }
+  }
+}
+
+
+$btnlist.forEach(btn => btn.addEventListener('click', onClickBtnItemList));
+//</콜라 선택 시 결제 대기 목록에 추가>
