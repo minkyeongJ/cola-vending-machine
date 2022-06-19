@@ -270,6 +270,13 @@ body{
     pointer-events: none;
 }
 
+@media only screen and (min-device-width: 481px) and (max-width:860px){
+  #app {
+        padding-left: 0;
+        padding-right: 0;
+  }
+}
+
 @media only screen and (min-device-width: 320px) and (max-width: 480px) and (-webkit-min-device-pixel-ratio:2) {
     body {
         background-color: #fff;
@@ -285,6 +292,7 @@ body{
     #app .vending-machine,
     #app .my-info{
         margin: 0 auto;
+        min-width: 360px;
     }
 
     #app .title-app {
