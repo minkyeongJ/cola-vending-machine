@@ -4,6 +4,7 @@ const $charge = document.querySelector('.txt-charge');
 const $myMoney = document.querySelector('.txt-mymoney');
 const $listItem = document.querySelector('.list-item');
 const $listStaged = document.querySelector('.list-staged');
+const $btnGet = document.querySelector('.btn-get');
 
 let input;
 
@@ -165,6 +166,7 @@ const onClickBtnItemList = (cola) => {
   }
   
   // 콜라 리스트 화면에 보여주기
+  $listStaged.textContent = '';
   pendingColaList.forEach(cola => {
     const li = document.createElement('li');
     li.classList.add('list-btn');
@@ -192,8 +194,18 @@ const onClickBtnItemList = (cola) => {
     li.append(listButton);
     $listStaged.prepend(li);
   });
+  console.log(pendingColaList);
 }
-
 
 $btnlist.forEach(btn => btn.addEventListener('click', onClickBtnItemList));
 //</콜라 선택 시 결제 대기 목록에 추가>
+
+//<획득 버튼 동작>
+const onClickBtnGet = () => {
+  //장바구니에 담긴 colaList를 획득한 음료로 이동
+  // const getColaList =  [...onClickBtnItemList];
+  //소지금 가격을 잔액 가격과 동일하게 변경
+};
+
+$btnGet.addEventListener('click', onClickBtnGet);
+//</획득 버튼 동작>
