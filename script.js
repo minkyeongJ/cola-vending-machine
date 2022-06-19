@@ -5,6 +5,8 @@ const $myMoney = document.querySelector('.txt-mymoney');
 const $listItem = document.querySelector('.list-item');
 const $listStaged = document.querySelector('.list-staged');
 const $btnGet = document.querySelector('.btn-get');
+const $listGet = document.querySelector('.list-get');
+const $totalItemPrice = document.querySelector('.total-itemPrice');
 
 let input;
 
@@ -102,6 +104,7 @@ const onClickBtnItem = (event) => {
   } else {
     charge = charge - price;
     $charge.textContent = `${charge} 원`;
+    onClickBtnItemList(event);
   }
 }
 
@@ -197,14 +200,55 @@ const onClickBtnItemList = (cola) => {
   console.log(pendingColaList);
 }
 
-$btnlist.forEach(btn => btn.addEventListener('click', onClickBtnItemList));
+// $btnlist.forEach(btn => btn.addEventListener('click', onClickBtnItemList));
 //</콜라 선택 시 결제 대기 목록에 추가>
 
 //<획득 버튼 동작>
 const onClickBtnGet = () => {
   //장바구니에 담긴 colaList를 획득한 음료로 이동
-  // const getColaList =  [...onClickBtnItemList];
+  const getColaList =  [...pendingColaList];
+  getColaList.forEach(cola => {
+    const li = document.createElement('li');
+    li.classList.add('list-btn');
+    const listButton = document.createElement('button');
+    listButton.classList.add('btn-staged');
+  
+    //img
+    const img = document.createElement('img');
+    img.classList.add('img-item');
+    img.src = cola.img;
+    listButton.append(img);
+
+    //title
+    const title = document.createElement('strong');
+    title.classList.add('title-item');
+    title.textContent = cola.title;
+    listButton.append(title);
+    
+    //count
+    const count = document.createElement('span');
+    count.classList.add('num-counter');
+    count.textContent = cola.count;
+    listButton.append(count);
+    
+    li.append(listButton);
+    $listGet.prepend(li);
+    //획득 시 장바구니 초기화
+    $listStaged.textContent = '';
+  });
+  
   //소지금 가격을 잔액 가격과 동일하게 변경
+  $myMoney.textContent = $charge.textContent;
+
+  //총금액 변경
+  const colasPriceArr = getColaList.map( colaPrice => parseInt(colaPrice.count) * parseInt(colaPrice.price));
+
+  let sumItemsPrice = 0;
+  for (price of colasPriceArr){
+    sumItemsPrice += price;
+  }
+
+  $totalItemPrice.textContent = sumItemsPrice;
 };
 
 $btnGet.addEventListener('click', onClickBtnGet);
