@@ -140,17 +140,20 @@ const onClickBtnItemList = (cola) => {
     console.log("==============");
     setPending = new Set(pendingCompareArr.map(cola => cola.title));
     if (pendingCompareArr.length !== setPending.size) {
-      //새로 들어온 값이 기존 데이터와 중복 될 때 => 목록을 추가
+      //새로 들어온 값이 기존 데이터와 중복 될 때 => 갯수(count)를 상승
       // penndingColaList[i].count++;
       pendingColaList.push(new PendingColaCount(img, title)); 
       console.log('중복!');
     } else {
-      //중복 안 될 때 => 갯수(count)를 상승
+      //중복 안 될 때 => 목록을 추가
       pendingColaList.push(new PendingColaCount(img, title)); 
       console.log('중복 아님');
     }
   }
 }
+
+// 콜라 리스트 화면에 보여주기
+
 
 
 $btnlist.forEach(btn => btn.addEventListener('click', onClickBtnItemList));
