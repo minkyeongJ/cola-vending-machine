@@ -36,6 +36,7 @@ class ColaData{
     this.img = img;
     this.title = title;
     this.price = price;
+    this.stock = 10;
   }
 }
 
@@ -86,7 +87,6 @@ colaDataBase.forEach(cola => {
 
 //<콜라 선택 시 잔액 감소>
 const $btnlist = document.querySelectorAll('.list-btn');
-
 
 const onClickBtnItem = (event) => {
   let charge = parseInt($charge.textContent.replaceAll(',',''));
@@ -151,7 +151,6 @@ const onClickBtnItemList = (cola) => {
       console.log('중복!');
       pendingColaList.push(new PendingColaCount(img, title, price));
       for (let i = 0; i < pendingColaList.length; i++){
-        console.log("for문");
         const colaFirstIndex = pendingColaList.map(cola => cola.title).indexOf(pendingColaList[i].title);
         const colaLastIndex = pendingColaList.map(cola => cola.title).lastIndexOf(pendingColaList[i].title);
         if (colaFirstIndex !== colaLastIndex) {
@@ -236,6 +235,8 @@ const onClickBtnGet = () => {
     $listGet.prepend(li);
     //획득 시 장바구니 초기화
     $listStaged.textContent = '';
+    pendingColaList = [];
+    console.log(pendingColaList);
   });
   
   //소지금 가격을 잔액 가격과 동일하게 변경
@@ -250,6 +251,18 @@ const onClickBtnGet = () => {
   }
 
   $totalItemPrice.textContent = sumItemsPrice;
+
+  //재고 갯수 변경
+  //colaDataBase에서 이름이 같은 콜라를 찾고 획득으로 이동한 갯수 만큼 stock 감소
+  // for(let i = 0; i < colaDataBase.length; i++){
+  //   for(let j = 0; j < getColaList.length; j++){
+  //     if(colaDataBase[i].title == getColaList[j].title){
+  //       colaDataBase[i].stock = colaDataBase[i].stock - getColaList[j].count;
+  //       console.log(colaDataBase[i].stock);
+  //       break;
+  //     }
+  //   }
+  // }
 };
 
 $btnGet.addEventListener('click', onClickBtnGet);
